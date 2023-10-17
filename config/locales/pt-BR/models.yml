@@ -1,0 +1,28 @@
+pt-BR:
+  activerecord:
+    errors:
+      models:
+        track:
+          attributes:
+            name:
+        session:
+          attributes:
+            starts_at:
+              must_be_before_ends_at: Deve ser antes do fim
+            ends_at:
+              must_be_after_starts_at: Deve ser depois do início
+              must_be_in_the_same_day_as_starts_at: deve ser no mesmo dia que o Início
+      messages:
+        record_invalid: Registro é inválido
+
+    models:
+      track: Track
+      session: Sessão
+
+    attributes:
+      track:
+        name: Nome da Track
+      session:
+        starts_at: Início
+        ends_at: Fim
+        track_id: Track
