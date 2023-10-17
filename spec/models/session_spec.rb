@@ -8,6 +8,9 @@ RSpec.describe Session do
   end
 
   describe "validations" do
+    it { is_expected.to validate_presence_of(:starts_at) }
+    it { is_expected.to validate_presence_of(:ends_at) }
+
     context "when starts_at is after ends_at" do
       it "is invalid" do
         session = build(:session, starts_at: 2.hours.from_now, ends_at: 1.hour.from_now)
