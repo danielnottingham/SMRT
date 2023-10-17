@@ -2,9 +2,6 @@ pt-BR:
   activerecord:
     errors:
       models:
-        track:
-          attributes:
-            name:
         session:
           attributes:
             starts_at:
@@ -18,6 +15,7 @@ pt-BR:
     models:
       track: Track
       session: Sessão
+      talk: Palestra
 
     attributes:
       track:
@@ -26,3 +24,7 @@ pt-BR:
         starts_at: Início
         ends_at: Fim
         track_id: Track
+      talk:
+        title: Título
+        duration: Duração
+        lightning_talk: Palestras de 5 minutos
