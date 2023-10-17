@@ -5,6 +5,7 @@ require "rails_helper"
 RSpec.describe Session do
   describe "associations" do
     it { is_expected.to belong_to(:track) }
+    it { is_expected.to have_many(:talks).dependent(:destroy) }
   end
 
   describe "validations" do
@@ -41,6 +42,12 @@ RSpec.describe Session do
 
         expect(session).not_to be_valid
       end
+    end
+  end
+
+  describe "enumerations" do
+    it "has enumerations for session_type" do
+      expect(described_class.enumerations).to include(session_type: SessionTypes)
     end
   end
 end

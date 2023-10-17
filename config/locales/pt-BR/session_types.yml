@@ -1,0 +1,5 @@
+pt-BR:
+  enumerations:
+    session_types:
+      morning: Manhã
+      afternoon: Tarde
