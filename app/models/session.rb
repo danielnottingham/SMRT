@@ -17,7 +17,7 @@ class Session < ApplicationRecord
 
     return unless starts_at >= ends_at
 
-    errors.add(:starts_at, "must be before ends_at")
+    errors.add(:starts_at, :must_be_before_ends_at)
   end
 
   def ends_at_must_be_after_starts_at
@@ -25,7 +25,7 @@ class Session < ApplicationRecord
 
     return unless ends_at <= starts_at
 
-    errors.add(:ends_at, "must be after starts_at")
+    errors.add(:ends_at, :must_be_after_starts_at)
   end
 
   def starts_at_and_ends_at_in_same_day
@@ -33,6 +33,6 @@ class Session < ApplicationRecord
 
     return if starts_at.to_date == ends_at.to_date
 
-    errors.add(:ends_at, "must be in the same day as starts_at")
+    errors.add(:ends_at, :must_be_in_the_same_day_as_starts_at)
   end
 end
