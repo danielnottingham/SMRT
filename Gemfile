@@ -7,6 +7,7 @@ ruby file: ".ruby-version"
 gem "bootsnap", "1.16.0", require: false
 gem "cssbundling-rails", "1.3.3"
 gem "dotenv-rails", "2.8.1", groups: %i[development test]
+gem "enumerate_it", "3.2.4"
 gem "image_processing", "1.12.2"
 gem "jsbundling-rails", "1.2.1"
 gem "pg", "1.5.4"
