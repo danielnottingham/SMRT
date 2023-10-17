@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Session < ApplicationRecord
+  has_enumeration_for :session_type, with: SessionTypes, create_helpers: true
+
   belongs_to :track
 
   validates :starts_at, presence: true
