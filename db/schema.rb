@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_10_17_184438) do
+ActiveRecord::Schema[7.1].define(version: 2023_10_19_141259) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -25,6 +25,16 @@ ActiveRecord::Schema[7.1].define(version: 2023_10_17_184438) do
     t.index ["track_id"], name: "index_sessions_on_track_id"
   end
 
+  create_table "talks", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "title", null: false
+    t.integer "duration", null: false
+    t.boolean "lightning_talk", default: false, null: false
+    t.uuid "session_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["session_id"], name: "index_talks_on_session_id"
+  end
+
   create_table "tracks", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
@@ -32,4 +42,5 @@ ActiveRecord::Schema[7.1].define(version: 2023_10_17_184438) do
   end
 
   add_foreign_key "sessions", "tracks"
+  add_foreign_key "talks", "sessions"
 end

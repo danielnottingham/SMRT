@@ -5,6 +5,8 @@ class Session < ApplicationRecord
 
   belongs_to :track
 
+  has_many :talks, dependent: :destroy
+
   validates :starts_at, presence: true
   validates :ends_at, presence: true
 

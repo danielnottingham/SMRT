@@ -95,3 +95,8 @@ Style/SymbolProc:
 
 Style/UnlessLogicalOperators:
   EnforcedStyle: forbid_logical_operators
+
+RSpec/MultipleExpectations:
+  Exclude:
+    - spec/requests/**/*
+    - spec/operations/**/*
