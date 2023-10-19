@@ -1,0 +1,25 @@
+<%= form_with(model: talk) do |form| %>
+  <div>
+    <%= form.label :title, style: "display: block" %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div>
+    <%= form.label :duration, style: "display: block" %>
+    <%= form.number_field :duration %>
+  </div>
+
+  <div>
+    <%= form.label :lightning_talk, style: "display: block" %>
+    <%= form.check_box :lightning_talk %>
+  </div>
+
+  <div>
+    <%= form.label :session_id, style: "display: block" %>
+    <%= form.select :session_id, Session.pluck(:session_type, :id), include_blank: true %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -5,6 +5,7 @@ require "rails_helper"
 RSpec.describe Session do
   describe "associations" do
     it { is_expected.to belong_to(:track) }
+    it { is_expected.to have_many(:talks).dependent(:destroy) }
   end
 
   describe "validations" do
