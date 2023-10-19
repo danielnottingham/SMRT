@@ -10,7 +10,7 @@ class TalksController < ApplicationController
   end
 
   def show
-    render talk
+    @talk = talk
   end
 
   def new
@@ -35,7 +35,7 @@ class TalksController < ApplicationController
     result = Talks::Update.result(id: params[:id], attributes: talk_params)
 
     if result.success?
-      redirect_to result.talk, status: :ok
+      redirect_to talk_path(result.talk), status: :see_other
     else
       render :edit, status: :unprocessable_entity
     end
@@ -47,7 +47,25 @@ class TalksController < ApplicationController
     redirect_to talks_path, status: :see_other
   end
 
+  def import
+    result = Talks::CreateFromFile.result(file: params[:file])
+  end
+
   private
+
+  def parse_talk_attributes(line)
+    match = line.match(/(\d+)min/)
+
+    if match
+      duration = match[1].to_i
+
+      title = line.sub(match[0], "").strip
+
+      { title: title, duration: duration, lightning_talk: false }
+    else
+      { title: line, duration: 5, lightning_talk: true }
+    end
+  end
 
   def talk
     @talk ||= Talks::Find.result(id: params[:id]).talk

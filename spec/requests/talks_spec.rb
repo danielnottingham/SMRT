@@ -87,7 +87,7 @@ RSpec.describe "Talks" do
 
         put talk_path(talk), params: { talk: new_attributes }
 
-        expect(response).to have_http_status(:ok)
+        expect(response).to have_http_status(:see_other)
       end
 
       it "updates the requested talk" do
