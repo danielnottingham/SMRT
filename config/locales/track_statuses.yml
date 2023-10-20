@@ -1,0 +1,4 @@
+en:
+  enumerations:
+    track_statuses:
+      pending: 'Pending'

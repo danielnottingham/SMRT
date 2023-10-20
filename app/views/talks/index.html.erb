@@ -12,3 +12,13 @@
 </div>
 
 <%= link_to "New talk", new_talk_path %>
+
+<%= form_tag import_talks_path, multipart: true, style: "margin: 20px;" do %>
+  <div class="field">
+    <%= file_field_tag :file, accept: ".txt" %>
+  </div>
+
+  <div class="actions">
+    <%= submit_tag "Import Talks" %>
+  </div>
+<% end %>
