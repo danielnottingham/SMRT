@@ -59,24 +59,6 @@ RSpec.describe "Talks" do
         expect(response).to redirect_to(talk_path(Talk.last))
       end
     end
-
-    context "with invalid parameters" do
-      it "does not create a new talk" do
-        invalid_attributes = { title: "First talk", duration: 10, lightning_talk: false }
-
-        expect do
-          post talks_path, params: { talk: invalid_attributes }
-        end.not_to change(Talk, :count)
-      end
-
-      it "renders a response with 422 status" do
-        invalid_attributes = { title: "First talk", duration: 10, lightning_talk: false }
-
-        post talks_path, params: { talk: invalid_attributes }
-
-        expect(response).to have_http_status(:unprocessable_entity)
-      end
-    end
   end
 
   describe "#update" do

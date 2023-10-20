@@ -48,7 +48,7 @@ class TalksController < ApplicationController
   end
 
   def import
-    result = Talks::CreateFromFile.result(file: params[:file])
+    Talks::CreateFromFile.result(file: params[:file])
   end
 
   private
